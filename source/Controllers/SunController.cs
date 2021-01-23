@@ -11,17 +11,17 @@ using Microsoft.Extensions.Logging;
 namespace ApiPlayground.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class SunCalendarController : ControllerBase
+    [Route("api/[controller]")]
+    public class SunController : ControllerBase
     {
-        private readonly ILogger<SunCalendarController> _logger;
+        private readonly ILogger<SunController> _logger;
 
-        public SunCalendarController(ILogger<SunCalendarController> logger)
+        public SunController(ILogger<SunController> logger)
         {
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet("calendar.ics")]
         public string Get([FromQuery] double lat, [FromQuery] double lon)
         {
             var output = Enumerable.Range(0, 365)
