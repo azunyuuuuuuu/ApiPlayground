@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/source/bin/Debug/net5.0/source.dll",
+            "program": "${workspaceFolder}/source/bin/Debug/net5.0/ApiPlayground.dll",
             "args": [],
             "cwd": "${workspaceFolder}/source",
             "stopAtEntry": false,
