@@ -1,19 +1,20 @@
 # https://hub.docker.com/_/microsoft-dotnet
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-WORKDIR /source
+WORKDIR /src
 
 # copy csproj and restore as distinct layers
-COPY source/*.csproj /source/
+COPY source/*.csproj /src/
 RUN dotnet restore
 
 # copy everything else and build app
-COPY source/. /source/
-WORKDIR /source
-RUN dotnet publish -c release -o /app --no-restore
+COPY source/. /src/
+RUN dotnet publish -c release -o /output --no-restore
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
-COPY --from=build /app ./
+
+COPY --from=build /output ./
+
 EXPOSE "80"
-ENTRYPOINT ["dotnet", "source.dll"]
+ENTRYPOINT ["dotnet", "ApiPlayground.dll"]
