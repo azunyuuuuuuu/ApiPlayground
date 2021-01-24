@@ -50,7 +50,7 @@ namespace ApiPlayground.Controllers
                 });
 
             if (filenames.SingleOrDefault(x => x.Filename == file) == null)
-                throw new ArgumentException($"File '{file}' is not in the gist");
+                throw new ArgumentException($"The gist does not contain file '{file}'");
 
             return await client.GetStringAsync(filenames.SingleOrDefault(x => x.Filename == file).Url);
         }
