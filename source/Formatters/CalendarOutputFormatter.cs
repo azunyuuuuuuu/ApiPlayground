@@ -75,9 +75,22 @@ namespace ApiPlayground.Formatter
         private static void FormatCalendarEvent(StringBuilder buffer, CalendarEvent @event, ILogger<CalendarOutputFormatter> logger)
         {
             buffer.AppendLine("BEGIN:VEVENT");
-            buffer.AppendLine($"SUMMARY:{@event.Summary}");
+
+            // buffer.AppendLine($"UID:-");
+            // buffer.AppendLine($"CREATED:-");
+            // buffer.AppendLine($"LAST-MODIFIED:-");
+
             buffer.AppendLine($"DTSTART:{(@event.Start).ToString("yyyyMMdd'T'HHmmss'Z'", DateTimeFormatInfo.InvariantInfo)}");
             buffer.AppendLine($"DTEND:{(@event.End).ToString("yyyyMMdd'T'HHmmss'Z'", DateTimeFormatInfo.InvariantInfo)}");
+            buffer.AppendLine($"SUMMARY:{@event.Summary}");
+            buffer.AppendLine($"DESCRIPTION:");
+            buffer.AppendLine($"STATUS:CONFIRMED");
+            buffer.AppendLine($"TRANSP:TRANSPARENT");
+            buffer.AppendLine($"LOCATION:");
+            buffer.AppendLine($"SEQUENCE:1");
+
+            buffer.AppendLine($"X-MICROSOFT-CDO-BUSYSTATUS:FREE");
+
             buffer.AppendLine("END:VEVENT");
 
             logger.LogInformation($"Writing '{@event.Summary}' ({@event.Start} - {@event.End})");
