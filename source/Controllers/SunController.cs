@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 namespace ApiPlayground.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("sun")]
     public class SunController : ControllerBase
     {
         private readonly ILogger<SunController> _logger;
