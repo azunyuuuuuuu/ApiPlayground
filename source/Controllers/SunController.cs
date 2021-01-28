@@ -41,11 +41,11 @@ namespace ApiPlayground.Controllers
                 }).Select(x => new
                 {
                     SunriseEvent = new CalendarEvent(
-                         Summary: "Sunrise",
+                         Summary: "🌅",
                          Start: x.SunriseBegin,
                          End: x.SunriseEnd),
                     SunsetEvent = new CalendarEvent(
-                         Summary: "Sunset",
+                         Summary: "🌇",
                          Start: x.SunsetBegin,
                          End: x.SunsetEnd)
                 });
